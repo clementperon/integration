@@ -5,7 +5,7 @@ services:
     # mender-deployments
     #
     mender-deployments:
-        image: mendersoftware/deployments:master
+        image: mendersoftware/deployments:2.4-dev
         extends:
             file: common.yml
             service: mender-base
@@ -55,7 +55,7 @@ services:
     # mender-device-auth
     #
     mender-device-auth:
-        image: mendersoftware/deviceauth:master
+        image: mendersoftware/deviceauth:2.4-dev
         environment:
             DEVICEAUTH_ORCHESTRATOR_ADDR: http://mender-workflows-server:8080/
         extends:
@@ -71,7 +71,7 @@ services:
     # mender-inventory
     #
     mender-inventory:
-        image: mendersoftware/inventory:master
+        image: mendersoftware/inventory:2.4-dev
         extends:
             file: common.yml
             service: mender-base
@@ -97,7 +97,7 @@ services:
     # mender-workflows-server
     #
     mender-workflows-server:
-        image: mendersoftware/workflows:master
+        image: mendersoftware/workflows:2.4-dev
         environment:
             WORKFLOWS_MONGO_URL: mongodb://mender-mongo:27017
         extends:
@@ -112,7 +112,7 @@ services:
     # mender-workflows-worker
     #
     mender-workflows-worker:
-        image: mendersoftware/workflows-worker:master
+        image: mendersoftware/workflows-worker:2.4-dev
         command: worker --excluded-workflows generate_artifact
         environment:
             WORKFLOWS_MONGO_URL: mongodb://mender-mongo:27017
